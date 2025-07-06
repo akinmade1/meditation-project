@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Daily Stoic Reading</title>
+  <style>
+    body {
+      background: #f8f4ee;
+      font-family: 'Georgia', serif;
+      color: #333;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .quote-box {
+      background: #fff;
+      padding: 25px;
+      margin-top: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 24px;
+      font-size: 1em;
+      cursor: pointer;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧘‍♂️ Daily Stoic Reading</h1>
+  <div class="quote-box" id="reading">Loading...</div>
+  <br>
+  <button onclick="generateReading()">🎲 New Insight</button>
+
+  <script>
+    const sectionsPerBook = {
+      1: 16, 2: 17, 3: 16, 4: 51, 5: 33, 6: 30,
+      7: 75, 8: 59, 9: 42, 10: 38, 11: 39, 12: 36
+    };
+
+    function generateReading() {
+      const bookNumbers = Object.keys(sectionsPerBook);
+      const randomBook = bookNumbers[Math.floor(Math.random() * bookNumbers.length)];
+      const maxSection = sectionsPerBook[randomBook];
+      const randomSection = Math.floor(Math.random() * maxSection) + 1;
+
+      const readingText = `📖 Book ${randomBook}, Section ${randomSection}`;
+      document.getElementById('reading').textContent = readingText;
+    }
+
+    // Generate one on page load
+    generateReading();
+  </script>
+</body>
+</html>
